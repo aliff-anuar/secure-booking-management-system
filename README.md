@@ -1,59 +1,167 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Secure Booking Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A secure web-based Booking Management System developed using Laravel with a strong focus on secure coding practices, access control, and vulnerability mitigation.
+This project was developed as part of an Application Security / Secure Web Development assignment.
 
-## About Laravel
+## Project Overview
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The Secure Booking Management System allows authenticated users to create, view, update, and delete service bookings securely.
+An admin role is included to manage all bookings. The system applies OWASP Top 10 security controls and was tested using Snyk.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Objectives:
+- Implement a secure CRUD booking system
+- Apply authentication & authorization controls
+- Protect against common web vulnerabilities
+- Log sensitive user actions
+- Perform vulnerability scanning and remediation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Features:
 
-## Learning Laravel
+👤 User
+- User registration & login
+- Email verification
+- Create, view, edit, and delete own bookings
+- Secure session handling
+- CSRF protection
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+🛡️ Admin
+- View all user bookings
+- Delete bookings
+- Role-based access control (RBAC)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+📝 Booking System
+- Service selection (dropdown)
+- Date & time selection
+- Ownership enforcement (users can only modify their own data)
 
-## Laravel Sponsors
+🔍 Audit Logging
+- Tracks CREATE, UPDATE, DELETE actions
+- Stores user ID, action type, and entity affected
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🔐 Security Implementations
 
-### Premium Partners
+| Security Control       | Implementation               |
+| ---------------------- | ---------------------------- |
+| Authentication         | Laravel Breeze               |
+| Authorization          | Role-based access control    |
+| CSRF Protection        | Laravel CSRF tokens          |
+| Session Security       | Secure session configuration |
+| Password Hashing       | Bcrypt (Laravel default)     |
+| Input Validation       | Server-side validation       |
+| Access Control         | Ownership checks             |
+| Secure Hashing         | HMAC-SHA256                  |
+| Vulnerability Scanning | Snyk                         |
+| Audit Logging          | Custom AuditLog model        |
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 🧪 Vulnerability Testing
 
-## Contributing
+Security testing was conducted using Snyk.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 🛠️ Technologies Used
+- Backend: Laravel 10
+- Frontend: Blade + Tailwind CSS
+- Database: SQLite
+- Authentication: Laravel Breeze
+- Security Scan: Snyk
+- Server: Laravel Herd
+- Version Control: Git & GitHub
+  
+### ⚙️ Installation Guide
+1️⃣ Clone Repository
+```
+git clone https://github.com/aliff-anuar/secure-booking-management-system.git
+cd secure-booking-management-system
+```
 
-## Code of Conduct
+2️⃣ Install Dependencies
+```
+composer install
+npm install
+npm run build
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3️⃣ Environment Setup
+```
+cp .env.example .env
+php artisan key:generate
+```
 
-## Security Vulnerabilities
+Configure .env:
+```
+DB_CONNECTION=sqlite
+DB_DATABASE=/absolute/path/database.sqlite
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Create database file:
+```
+touch database/database.sqlite
+```
 
-## License
+4️⃣ Run Migrations & Seeders
+```
+php artisan migrate --seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5️⃣ Start Application
+```
+php artisan serve
+```
+
+### 🔑 Default Accounts
+```
+Admin
+Email: admin@test.com
+Password: Admin@123
+Role: admin
+
+User
+Register via UI or seeders.
+```
+
+### 📁 Project Structure (Key Files)
+```
+app/
+ ├── Http/Controllers/
+ │   ├── BookingController.php
+ │   └── Admin/BookingController.php
+ ├── Models/
+ │   ├── User.php
+ │   ├── Booking.php
+ │   └── AuditLog.php
+
+resources/views/
+ ├── bookings/
+ ├── admin/
+ └── layouts/
+
+tests/Feature/Auth/
+ └── EmailVerificationTest.php
+```
+
+### 🧾 Assignment Compliance
+
+✔ Secure CRUD module implemented
+
+✔ OWASP Top 10 addressed
+
+✔ Vulnerability scan performed
+
+✔ Fixes documented
+
+✔ Role-based access control
+
+✔ Secure session & CSRF handling
+
+
+### 👨‍🎓 Author
+
+Name:Aliff Anuar
+
+Course:Bachelor in Computer System Security/Secure Software Development
+
+Institution: Malaysian Institute of Information Technology
+
+
+### 📜 License
+
+This project is for educational purposes only.
