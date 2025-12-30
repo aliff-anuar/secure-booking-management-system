@@ -1,3 +1,17 @@
+## 📸 Screenshots
+
+### Login Page
+![Login](screenshots/login.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Booking Management
+![Bookings](screenshots/bookings.png)
+
+### Admin Panel
+![Admin](screenshots/admin.png)
+
 # Secure Booking Management System
 
 A secure web-based Booking Management System developed using Laravel with a strong focus on secure coding practices, access control, and vulnerability mitigation.
